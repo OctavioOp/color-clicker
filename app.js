@@ -12,27 +12,25 @@ function random_color()
 
 $(document).ready(function(){
     $('#large_box').on('click',function(){
-        alert('you clicked the big box!');  
+      //  alert('you clicked the big box!');  
         $('#large_box').children().css('background-color', random_color());
         $('#large_box').css('background-color', random_color());
  //comenta esto cuando hayas averiguado para qué se utiliza event.stopPropagation 
      })
      
      $('.middle_box').on('click',function(){
-        alert('you clicked the middle box!'); 
+       // alert('you clicked the middle box!'); 
         $('.middle_box').parent().css('background-color', random_color());
+        event.stopPropagation();
      })
 
-     $('div.side_box').on('click',function(){
-        alert('you clicked the side box!'); 
+     $('.side_box').on('click',function(){
+      //  alert('you clicked the side box!'); 
         $(this).siblings().css('background-color', random_color());
-     })
-
-
-     $('.side_box').click(function(event){
+          //evita la propagacion del click a las cajas de mas atras
         event.stopPropagation();
      })
-     $('.middle_box').click(function(event){
-        event.stopPropagation();
-     })
+
+      
+    
 })
